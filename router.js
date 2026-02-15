@@ -48,4 +48,4 @@ const Router = {
 // Start the router when the DOM is ready
 document.addEventListener('DOMContentLoaded', Router.init);
 
-export default Router;
+export default Router; 
