@@ -1,0 +1,227 @@
+/* * 2026 K ARCHIVE | Global Design System
+ * Philosophy: Luxury Minimalism, Silence, and Precision.
+ */
+
+:root {
+    /* Color Palette */
+    --ink: #0A0A0A;          /* Deep solid black */
+    --paper: #FAFAFA;        /* Off-white prestige background */
+    --gold: #C5A059;         /* Vantage gold accent */
+    --gold-dim: #A68545;     /* Hover state gold */
+    --border: rgba(10, 10, 10, 0.08); /* Minimalist structure */
+    --glass: rgba(250, 250, 250, 0.85); /* Frosty transparency */
+    
+    /* Typography */
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --tracking-wide: 0.15em;
+    --tracking-tight: -0.02em;
+}
+
+/* Base Body Logic */
+body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-display);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 200;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+p {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+}
+
+/* Header & Navigation */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-logo {
+    height: 24px;
+    width: auto;
+}
+
+.brand-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+}
+
+/* Main Hero Gateway */
+.hero-gateway {
+    padding-top: 200px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.hero-gateway h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: #666;
+    letter-spacing: 0.4em;
+}
+
+/* Asset Cards Grid */
+.asset-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.asset-card {
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    background: white;
+    height: 300px;
+}
+
+.asset-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.card-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 40px;
+}
+
+.card-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.card-action {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid var(--ink);
+    width: fit-content;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.asset-card:hover .card-action {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* Vault HUD (Footer) */
+.vault-hud {
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 100px;
+}
+
+.vault-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vault-status {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background: #00FF00;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.legal-minimal {
+    font-size: 0.65rem;
+    color: #999;
+    letter-spacing: 0.1em;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+    .header-inner { padding: 0 20px; }
+    .asset-grid { padding: 40px 20px; }
+    .grid-container { grid-template-columns: 1fr; }
+    .hero-gateway { padding-top: 150px; }
+}
