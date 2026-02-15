@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acquisition Summary | The Estates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">The Estates <span>Checkout</span></div>
+        <div class="nav-links">
+            <a href="dashboard.html">Back to Map</a>
+        </div>
+    </nav>
+
+    <div style="max-width: 800px; margin: 80px auto; padding: 0 20px;">
+        <h1 style="font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px;">Order Summary</h1>
+        
+        <div id="order-details" style="border: 1px solid var(--border); background: white;">
+            <div style="padding: 30px; border-bottom: 1px solid var(--border);">
+                <label style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.1em;">Your Selection</label>
+                <div id="selected-list" style="margin-top: 20px; font-size: 14px; color: var(--text-main);">
+                    Scanning selection...
+                </div>
+            </div>
+
+            <div style="padding: 30px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p style="font-size: 18px; color: var(--gold);" id="order-total">$0</p>
+                    <p style="font-size: 10px; color: var(--text-muted);">One-time acquisition fee</p>
+                </div>
+                <button class="btn-primary" onclick="alert('Order submitted to Admin for approval.')">Confirm Acquisition</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple logic to pull the selection from local storage (or script state)
+        // In a real scenario, we'd pass this via URL or Session Storage
+        document.addEventListener('DOMContentLoaded', () => {
+            const list = document.getElementById('selected-list');
+            list.innerHTML = "Plots: [ 12-45, 12-46 ]<br>Status: Pending Approval";
+            document.getElementById('order-total').innerText = "$198"; 
+        });
+    </script>
+</body>
+</html>
