@@ -1,0 +1,94 @@
+/* * 2026 K ARCHIVE | Global Reset
+ * Purpose: Neutralize browser defaults to ensure deterministic grid rendering.
+ */
+
+*, *::before, *::after {
+    box-sizing: border-box; /* পিক্সেল ক্যালকুলেশন নির্ভুল রাখার জন্য */
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    line-height: inherit;
+    -webkit-tap-highlight-color: transparent; /* মোবাইলে ক্লিক হাইলাইট রিমুভ */
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* List Reset */
+ol, ul, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Interaction & Media Reset */
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Form & Input Reset */
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: inherit;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+
+/* Canvas Reset for Grid Engine */
+canvas {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated; /* পিক্সেলগুলো যেন ঘোলা না হয়ে শার্প থাকে */
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* Scrollbar Reset for Luxury Aesthetic */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FAFAFA;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E5E5E1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #C5A059;
+}
