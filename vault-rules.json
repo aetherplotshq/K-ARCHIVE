@@ -1,0 +1,45 @@
+{
+  "rules": {
+    /* 1. Global Read Access: আর্কাইভের সব তথ্য পাবলিকলি দেখা যাবে */
+    ".read": "true",
+    
+    /* 2. Admin Global Write: ডিফল্টভাবে শুধুমাত্র অথেনটিকেটেড অ্যাডমিন লিখতে পারবে */
+    ".write": "auth != null",
+
+    "plots": {
+      /* সেকশন ভিত্তিক প্লট ডাটা সবাই রিড করতে পারবে */
+      ".read": "true",
+      
+      "$section_id": {
+        "$plot_id": {
+          /* প্লট আপডেট করতে হলে অবশ্যই অ্যাডমিন হিসেবে লগইন থাকতে হবে */
+          ".write": "auth != null",
+          /* ডেটা স্ট্রাকচার ভ্যালিডেশন */
+          ".validate": "newData.hasChildren(['status', 'updatedAt'])"
+        }
+      }
+    },
+
+    "orders": {
+      /* অ্যাডমিন অর্ডারগুলো দেখতে পারবে */
+      ".read": "auth != null",
+      
+      "$order_id": {
+        /* ইউজাররা নতুন অর্ডার ক্রিয়েট করতে পারবে, কিন্তু পুরনো অর্ডার এডিট বা ডিলিট করতে পারবে না */
+        ".write": "!data.exists()",
+        
+        /* অর্ডার সাবমিশন রুলস */
+        ".validate": "newData.hasChildren(['buyerName', 'sectionId', 'plotIds', 'totalPaid', 'timestamp'])",
+        
+        "buyerName": { ".validate": "newData.isString() && newData.val().length > 0" },
+        "totalPaid": { ".validate": "newData.isNumber() && newData.val() > 0" }
+      }
+    },
+
+    "notifications": {
+      /* গ্লোবাল নোটিফিকেশন সবাই দেখতে পারবে কিন্তু শুধু অ্যাডমিন এডিট করবে */
+      ".read": "true",
+      ".write": "auth != null"
+    }
+  }
+}
